@@ -105,6 +105,9 @@ public class PropertyService {
         if (nonNull(updatedProp.getDescription()))
             property.setDescription(updatedProp.getDescription());
 
+        if (nonNull(updatedProp.getPropertyType()))
+            property.setPropertyType(updatedProp.getPropertyType());
+
         property.setModifiedOn(LocalDateTime.now());
     }
 
