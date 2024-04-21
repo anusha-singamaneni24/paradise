@@ -167,14 +167,21 @@ public class PropertyService {
 
     private void sendEmail(User productUser, User enquiryUser, Property property) {
         SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom("shantanumalviya19@gmail.com");
+        message.setFrom("s.anusha1706@gmail.com");
         message.setTo(productUser.getEmail());
-        message.setSubject("Enquiry for your cataloged construction work : " + property.getName());
-        message.setText("A contactor has shown an interest on your added enquiry for your property : "
-                + property.getName() +
-                ", \n\n kindly Email the potential contractor for discussing the requirement details and quotation. \n\nHere Is The Details Of Enquirer. " +
-                " Name: " + enquiryUser.getFirstname() + " " + enquiryUser.getLastname() + " " +
-                " Email ID: " + enquiryUser.getEmail()+" \n\n Thanks & Regards \nTeam Homey");
+        message.setSubject("Enquiry for your cataloged property on Paradise : " + property.getName());
+
+        String emailMsg = "Dear " + productUser.getFirstname() + ",\n\n" +
+                "A potential tenant has expressed interest in your property listed on Paradise: \"" + property.getName() + "\". We kindly request that you reach out to the enquirer to discuss the property details and deposit.\n\n" +
+                "Here are the details of the enquirer:\n\n" +
+                "- **Name:** " + enquiryUser.getFirstname() + " " + enquiryUser.getLastname() + "\n" +
+                "- **Email ID:** " + enquiryUser.getEmail() + "\n\n" +
+                "Please contact the enquirer at your earliest convenience to further discuss the property and any necessary arrangements. If you have any questions or need assistance, feel free to reach out to us.\n\n" +
+                "Thank you for using Paradise.\n\n" +
+                "Warm regards,\n\n" +
+                "Team Paradise";
+
+        message.setText(emailMsg);
         this.emailSender.send(message);
     }
 }
